@@ -10,7 +10,7 @@ class MovieFilter
     {
     }
 
-    public function getRandom(): array
+    public function getRandomMovie(): array
     {
         $index = array_rand($this->movies);
 
