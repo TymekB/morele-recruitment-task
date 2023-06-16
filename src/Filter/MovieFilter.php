@@ -19,8 +19,20 @@ class MovieFilter
 
     public function getMoviesWithEvenTitleThatStartsWithLetter(string $letter): array
     {
-        return array_filter($this->movies, function(string $title) use ($letter) {
-            return str_starts_with($title, $letter) && strlen($title) % 2 === 0;
+        return array_filter($this->movies, function(string $movie) use ($letter) {
+            return str_starts_with($movie, $letter) && strlen($movie) % 2 === 0;
         });
+    }
+
+    public function getMoviesWithTitleGreaterThanNumberOfWords(int $numberOfWords): array
+    {
+        return array_filter($this->movies, function(string $movie) use($numberOfWords): bool {
+            return $this->getNumberOfWords($movie) > $numberOfWords;
+        });
+    }
+
+    private function getNumberOfWords(string $str): int
+    {
+        return count(preg_split('~[^\p{L}\p{N}\']+~u', $str));
     }
 }
