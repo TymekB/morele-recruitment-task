@@ -4,17 +4,22 @@ declare(strict_types=1);
 
 namespace App\Filter;
 
-class MovieFilter
+class MoviesFilter
 {
     public function __construct(private readonly array $movies)
     {
     }
 
-    public function getRandomMovie(): string
+    public function getRandomMovies(int $amount): array
     {
-        $index = array_rand($this->movies);
+        $indexes = array_rand($this->movies, $amount);
+        $randomMovies = [];
 
-        return $this->movies[$index];
+        foreach ($indexes as $index) {
+            $randomMovies[] = $this->movies[$index];
+        }
+
+        return $randomMovies;
     }
 
     public function getMoviesWithEvenTitleThatStartsWithLetter(string $letter): array
