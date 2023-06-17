@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filter\Exception;
 use Throwable;
 
-class AmountGreaterThanMoviesArrayLengthException extends \Exception
+class AmountGreaterThanMoviesArrayLengthException extends MovieFilterException
 {
     public function __construct(
         string $message = "Amount of random movies cannot be greater than movies array length",

@@ -6,7 +6,7 @@ namespace App\Filter\Exception;
 
 use Throwable;
 
-class AmountLowerThanOneException extends \Exception
+class AmountLowerThanOneException extends MovieFilterException
 {
     public function __construct(
         string $message = "Amount of movies cannot be lower than one",
