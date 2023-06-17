@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit;
 
+use App\Filter\Exception\AmountGreaterThanMoviesArrayLengthException;
 use App\Filter\MovieFilter;
 use App\Provider\MovieProvider;
 use PHPUnit\Framework\TestCase;
@@ -24,5 +25,12 @@ class MovieFilterTest extends TestCase
         $uniqueRandomMovies = array_unique($randomMovies);
 
         $this->assertTrue(count($randomMovies) === count($uniqueRandomMovies));
+    }
+
+    public function testIfAmountGreaterThanMoviesArrayLengthExceptionIsThrown()
+    {
+        $this->expectException(AmountGreaterThanMoviesArrayLengthException::class);
+
+        $this->moviesFilter->getRandomMovies(500);
     }
 }
