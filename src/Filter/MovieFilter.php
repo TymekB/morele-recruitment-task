@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Filter;
 
 use App\Filter\Exception\AmountGreaterThanMoviesArrayLengthException;
+use App\Filter\Exception\AmountLowerThanOneException;
 
-class MoviesFilter
+class MovieFilter
 {
     public function __construct(private readonly array $movies)
     {
@@ -16,6 +17,10 @@ class MoviesFilter
     {
         if($amount > count($this->movies)) {
             throw new AmountGreaterThanMoviesArrayLengthException();
+        }
+
+        if($amount < 1) {
+            throw new AmountLowerThanOneException();
         }
 
         $indexes = array_rand($this->movies, $amount);
