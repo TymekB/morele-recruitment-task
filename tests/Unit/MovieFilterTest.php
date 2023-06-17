@@ -41,4 +41,11 @@ class MovieFilterTest extends TestCase
 
         $this->movieFilter->getRandomMovies(0);
     }
+
+    public function testIfAmountLowerThanOneExceptionIsThrownWhenAmountIsLowerThanZero(): void
+    {
+        $this->expectException(AmountLowerThanOneException::class);
+
+        $this->movieFilter->getRandomMovies(-1);
+    }
 }
