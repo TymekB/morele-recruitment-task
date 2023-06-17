@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit;
+namespace Unit\MovieFilter;
 
 use App\Filter\Exception\AmountGreaterThanMoviesArrayLengthException;
 use App\Filter\Exception\AmountLowerThanOneException;
@@ -10,7 +10,7 @@ use App\Filter\MovieFilter;
 use App\Provider\MovieProvider;
 use PHPUnit\Framework\TestCase;
 
-class MovieFilterTest extends TestCase
+class RandomMoviesTest extends TestCase
 {
     private readonly MovieFilter $movieFilter;
 
