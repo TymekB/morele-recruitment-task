@@ -17,4 +17,12 @@ class MovieFilterTest extends TestCase
         $moviesProvider = new MovieProvider();
         $this->moviesFilter = new MovieFilter($moviesProvider->getMovies());
     }
+
+    public function testIfThreeRandomMoviesAreUnique(): void
+    {
+        $randomMovies = $this->moviesFilter->getRandomMovies(3);
+        $uniqueRandomMovies = array_unique($randomMovies);
+
+        $this->assertTrue(count($randomMovies) === count($uniqueRandomMovies));
+    }
 }
