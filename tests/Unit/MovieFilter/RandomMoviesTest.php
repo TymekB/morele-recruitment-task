@@ -7,7 +7,7 @@ namespace App\Tests\Unit\MovieFilter;
 use App\Filter\Exception\AmountGreaterThanMoviesArrayLengthException;
 use App\Filter\Exception\AmountLowerThanOneException;
 use App\Filter\MovieFilter;
-use App\Tests\Provider\MovieProvider;
+use App\Tests\DataProvider\MovieDataProvider;
 use PHPUnit\Framework\TestCase;
 
 class RandomMoviesTest extends TestCase
@@ -16,7 +16,7 @@ class RandomMoviesTest extends TestCase
 
     protected function setUp(): void
     {
-        $moviesProvider = new MovieProvider();
+        $moviesProvider = new MovieDataProvider();
         $this->movieFilter = new MovieFilter($moviesProvider->getMovies());
     }
 

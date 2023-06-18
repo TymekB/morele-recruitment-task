@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Provider;
+namespace App\Tests\DataProvider;
 
-class MovieProvider
+class MovieDataProvider
 {
     public function getMovies(): array
     {

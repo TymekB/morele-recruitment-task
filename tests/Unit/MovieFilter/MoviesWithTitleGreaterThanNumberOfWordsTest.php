@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\MovieFilter;
 use App\Filter\MovieFilter;
-use App\Tests\Provider\MovieProvider;
+use App\Tests\DataProvider\MovieDataProvider;
 use PHPUnit\Framework\TestCase;
 
 class MoviesWithTitleGreaterThanNumberOfWordsTest extends TestCase
 {
     public function testIfMoviesHaveTitleGreaterThanSpecifiedNumberOfWords()
     {
-        $moviesProvider = new MovieProvider();
+        $moviesProvider = new MovieDataProvider();
         $movieFilter = new MovieFilter($moviesProvider->getMovies());
 
         $movies = $movieFilter->getMoviesWithTitleGreaterThanNumberOfWords(1);
