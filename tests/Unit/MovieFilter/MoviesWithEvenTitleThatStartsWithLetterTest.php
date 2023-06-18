@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Unit\MovieFilter;
+namespace App\Tests\Unit\MovieFilter;
 
 use App\Filter\MovieFilter;
-use App\Provider\MovieProvider;
+use App\Tests\Provider\MovieProvider;
 use PHPUnit\Framework\TestCase;
 
 class MoviesWithEvenTitleThatStartsWithLetterTest extends TestCase
