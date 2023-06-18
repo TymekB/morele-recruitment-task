@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\MovieFilter;
+namespace App\Tests\Unit\MovieRecommendation;
 
-use App\Filter\Exception\AmountGreaterThanMoviesArrayLengthException;
-use App\Filter\Exception\AmountLowerThanOneException;
-use App\Filter\MovieFilter;
+use App\Movie\Recommendation\Exception\AmountGreaterThanMoviesArrayLengthException;
+use App\Movie\Recommendation\Exception\AmountLowerThanOneException;
+use App\Movie\Recommendation\MovieRecommendation;
 use App\Tests\DataProvider\MovieDataProvider;
 use PHPUnit\Framework\TestCase;
 
 class RandomMoviesTest extends TestCase
 {
-    private readonly MovieFilter $movieFilter;
+    private readonly MovieRecommendation $movieRecommendation;
 
     protected function setUp(): void
     {
         $moviesProvider = new MovieDataProvider();
-        $this->movieFilter = new MovieFilter($moviesProvider->getMovies());
+        $this->movieRecommendation = new MovieRecommendation($moviesProvider->getMovies());
     }
 
     public function testIfThreeRandomMoviesAreUnique(): void
     {
-        $randomMovies = $this->movieFilter->getRandomMovies(3);
+        $randomMovies = $this->movieRecommendation->getRandomMovies(3);
         $uniqueRandomMovies = array_unique($randomMovies);
 
         $this->assertTrue(count($randomMovies) === count($uniqueRandomMovies));
@@ -32,20 +32,20 @@ class RandomMoviesTest extends TestCase
     {
         $this->expectException(AmountGreaterThanMoviesArrayLengthException::class);
 
-        $this->movieFilter->getRandomMovies(500);
+        $this->movieRecommendation->getRandomMovies(500);
     }
 
     public function testIfAmountLowerThanOneExceptionIsThrownWhenAmountIsEqualZero(): void
     {
         $this->expectException(AmountLowerThanOneException::class);
 
-        $this->movieFilter->getRandomMovies(0);
+        $this->movieRecommendation->getRandomMovies(0);
     }
 
     public function testIfAmountLowerThanOneExceptionIsThrownWhenAmountIsLowerThanZero(): void
     {
         $this->expectException(AmountLowerThanOneException::class);
 
-        $this->movieFilter->getRandomMovies(-1);
+        $this->movieRecommendation->getRandomMovies(-1);
     }
 }

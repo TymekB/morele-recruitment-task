@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Filter;
+namespace App\Movie\Recommendation;
 
-use App\Filter\Exception\AmountGreaterThanMoviesArrayLengthException;
-use App\Filter\Exception\AmountLowerThanOneException;
+use App\Movie\Recommendation\Exception\AmountGreaterThanMoviesArrayLengthException;
+use App\Movie\Recommendation\Exception\AmountLowerThanOneException;
 
-class MovieFilter
+class MovieRecommendation
 {
     public function __construct(private readonly array $movies)
     {

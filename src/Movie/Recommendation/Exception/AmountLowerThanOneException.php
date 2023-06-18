@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Filter\Exception;
+namespace App\Movie\Recommendation\Exception;
+
 use Throwable;
 
-class AmountGreaterThanMoviesArrayLengthException extends MovieFilterException
+class AmountLowerThanOneException extends MovieRecommendationException
 {
     public function __construct(
-        string $message = "Amount of random movies cannot be greater than movies array length",
+        string $message = "Amount of movies cannot be lower than one",
         int $code = 0,
         ?Throwable $previous = null
     )

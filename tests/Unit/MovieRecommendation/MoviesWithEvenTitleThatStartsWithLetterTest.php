@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\MovieFilter;
+namespace App\Tests\Unit\MovieRecommendation;
 
-use App\Filter\MovieFilter;
+use App\Movie\Recommendation\MovieRecommendation;
 use App\Tests\DataProvider\MovieDataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -13,9 +13,9 @@ class MoviesWithEvenTitleThatStartsWithLetterTest extends TestCase
     public function testIfMoviesHaveEvenTitleThatStartsWithLetter(): void
     {
         $moviesProvider = new MovieDataProvider();
-        $movieFilter = new MovieFilter($moviesProvider->getMovies());
+        $movieRecommendation = new MovieRecommendation($moviesProvider->getMovies());
 
-        $movies = $movieFilter->getMoviesWithEvenTitleThatStartsWithLetter('W');
+        $movies = $movieRecommendation->getMoviesWithEvenTitleThatStartsWithLetter('W');
         $expectedMovies = [
             'Whiplash',
             'Wyspa tajemnic',
